@@ -139,7 +139,7 @@ public class BinaryTree<T> implements BinaryTreeInterface<T>
    {
 	   return 0;
    } // end getHeight_callBinaryNodeMethod
-
+   
    /** -------------------------------------------------------------------- */
    /** Task 3: Implement the 2 methods
     *     . In BinaryTree.java
@@ -150,15 +150,32 @@ public class BinaryTree<T> implements BinaryTreeInterface<T>
    @return  The number of nodes in the "whole" tree */
    public int getNumberOfNodes()
    {
-      return 0;
+      // return this.node;
+      return getNumberOfNodes(root);
    } // end getNumberOfNodes
    
    /** A Recursive Method in the BinaryTree Class   
     * Counts the nodes in the subtree rooted at this node.
    @return  The number of nodes in the subtree rooted at this node. */
-   private int getNumberOfNodes(BinaryNode<T> node)
-   {
-      return 0;
+  private int getNumberOfNodes(BinaryNode<T> node)
+   { 
+      if (node!=null)
+      {
+         int leftCounter = 0;
+         int rightCounter = 0;
+         if (node.getLeftChild()!=null)
+         {
+            leftCounter = getNumberOfNodes(node.getLeftChild());
+         }
+         if (node.getRightChild()!=null)
+         {
+            rightCounter = getNumberOfNodes(node.getRightChild());
+         }
+         return 1 + leftCounter + rightCounter;
+
+      }
+      else
+         return 0;
    } // end getNumberOfNodes
    
    /** The following calls getNumberOfNodes_binaryNodeMethod() which is a recursive binaryNode class method
